@@ -1,0 +1,59 @@
+    [
+        {
+            "image": "assets/car/car8.png",
+            "model": "Aston Martin",
+            "rent": 100000
+        },
+
+        {
+            "image": "assets/car/car12.png",
+            "model": "Aston Martin",
+            "rent": 100000
+        },
+
+        {
+            "image": "assets/car/car3.png",
+            "model": "Duster",
+            "rent": 100000
+        },{
+            "image": "assets/car/car4.png",
+            "model": "Aston Martin",
+            "rent": 100000
+        },{
+            "image": "assets/car/car5.png",
+            "model": "Aston Martin",
+            "rent": 100000
+        },{
+            "image": "assets/car/car6.png",
+            "model": "Aston Martin",
+            "rent": 100000
+        },{
+            "image": "assets/car/car7.png",
+            "model": "Aston Martin",
+            "rent": 100000
+        },{
+            "image": "assets/car/car9.png",
+            "model": "Aston Martin",
+            "rent": 100000
+        },{
+            "image": "assets/car/car10.png",
+            "model": "Aston Martin",
+            "rent": 100000
+        },
+
+        {
+            "image": "assets/car/car2.png",
+            "model": "Aston Martin",
+            "rent": 100000
+        },
+
+        {
+            "image": "assets/car/car1.png",
+            "model": "Aston Martin",
+            "rent": 100000
+        }
+        
+    ]
+
+
+    
