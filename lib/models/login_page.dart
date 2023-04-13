@@ -35,7 +35,7 @@ class _LoginDemoState extends State<LoginDemo> {
   login() async
   {
     var res = await http.post(
-      Uri.parse("http://192.168.1.68/dashboard/test/login.php"),
+      Uri.parse("http://192.168.0.128/dashboard/test/login.php"),
       body: {
         "email": email.text.trim(),
         "password": password.text.trim(),

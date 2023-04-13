@@ -25,7 +25,7 @@ class _Register_as_dealerState extends State<Register_as_dealer> {
 
   Future <List> senddata() async {
     print('Entered senddata');
-    final response = await http.post(Uri.parse("http://192.168.1.68/dashboard/test/register.php"), body: {
+    final response = await http.post(Uri.parse("http://192.168.0.128/dashboard/test/register.php"), body: {
       "name": name.text,
       "email": email.text,
       "mobile": mobile.text,
