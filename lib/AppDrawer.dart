@@ -60,6 +60,16 @@ class AppDrawer extends StatelessWidget {
               ),
               onTap: () => Navigator.pushNamed(context, "/renters"),
             ),
+            ListTile(
+              leading:
+              const Icon(CupertinoIcons.person_3_fill, color: Colors.white),
+              title: const Text(
+                "Car list",
+                style: TextStyle(color: Colors.white),
+                textScaleFactor: 1.3,
+              ),
+              onTap: () => Navigator.pushNamed(context, "/carlist"),
+            ),
           ],
         ),
       ),

@@ -1,6 +1,8 @@
 import 'package:thispls/home.dart';
 import 'package:thispls/models/add_car.dart';
+import 'package:thispls/models/carlist.dart';
 import 'package:thispls/models/login_page.dart';
+import 'package:thispls/models/carlist.dart';
 import 'models/Register.dart';
 import 'models/rentersList.dart';
 import 'models/welcome.dart';
@@ -11,6 +13,7 @@ void main() => runApp(myApp());
 
 class myApp extends StatelessWidget {
   const myApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     //http.post(Uri.parse("http://192.168.1.161:3000/"));
@@ -24,7 +27,10 @@ class myApp extends StatelessWidget {
           "/signup/Renter": (context) => Register_as_Renter(),
           "/addCar": (context) => add_car(),
           "/home": (context) => home(),
-          "/renters":(context) => rentersList(),
+          "/renters": (context) => rentersList(),
+          "/carlist": (context) => car_list(),
         });
   }
 }
+
+

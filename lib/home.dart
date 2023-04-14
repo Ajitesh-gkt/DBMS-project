@@ -91,18 +91,3 @@ class _homeState extends State<home> {
     );
   }
 }
-
-/*
-array = [{
-  "name": "Neha",
-  "age": 20
-},
-{
-  "name": "hitt",
-  "age": 19
-}]
-array = {'neha', 'hitt'}
-
-neha
-20
-*/
