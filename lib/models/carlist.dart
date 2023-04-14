@@ -10,37 +10,6 @@ class car_list extends StatefulWidget {
   _CarListState createState() => _CarListState();
 }
 
-class cars
-{
-  String modelname;
-  String carno;
-  int carage;
-
-  cars({required this.modelname,required this.carno,required this.carage});
-  factory cars.fromJson(Map<String,dynamic> json)
-  {
-    return cars(
-      modelname: json['model_name'],
-      carage: json['car_age'],
-      carno: json['car_no'],
-
-    );
-  }
-
-
-
-
-}
-
-Future<List<dynamic>> getCars() async {
-  var response = await http.get(Uri.parse("http://192.168.0.132/dashboard/test/carlist.php"));
-  try {
-    return cars.fromJson(json.decode(response.body));
-  } catch (e) {
-    throw Exception('Failed to load cars: ${e.toString()}');
-  }
-}
-
 class _CarListState extends State<car_list> {
   late Future<List<dynamic>> _futureCars;
 
@@ -49,8 +18,18 @@ class _CarListState extends State<car_list> {
     super.initState();
     _futureCars = getCars();
   }
+  List carlist = <dynamic>[];
 
+  Future<List<dynamic>> getCars() async {
 
+    var response = await http.get(Uri.parse("http://192.168.0.132/dashboard/test/carlist.php"));
+
+    setState(() {
+      carlist=json.decode(response.body);
+    });
+
+    return carlist;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +44,10 @@ class _CarListState extends State<car_list> {
               itemCount: car_list.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  leading: Text(car_list[index]['car_model']),
+                  leading: Text(car_list[index]['model_name']),
+                  title: Text(car_list[index]['car_no']),
+                  subtitle: Text(car_list[index]['car_age']),
+                  trailing: ElevatedButton(onPressed: (){},child: Text('Submit Request')),
                 );
               },
             );
@@ -75,7 +57,7 @@ class _CarListState extends State<car_list> {
             );
           } else if (snapshot.hasError) {
             return Center(
-              child: Text('Error fetching car list: ${snapshot.error}'),
+              child: Text('Error fetching car list'),
             );
           } else {
             return Center(
