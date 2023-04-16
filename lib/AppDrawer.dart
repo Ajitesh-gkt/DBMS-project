@@ -17,7 +17,7 @@ class AppDrawer extends StatelessWidget {
               child: UserAccountsDrawerHeader(
                 decoration: BoxDecoration(color: Colors.black),
                 accountName: Text(logged_name),
-                accountEmail: Text('email'),
+                accountEmail: Text(logged_email),
                 currentAccountPicture: CircleAvatar(
                   backgroundImage: NetworkImage(
                       'https://www.shutterstock.com/image-vector/businessman-icon-can-be-used-260nw-247098721.jpg'),

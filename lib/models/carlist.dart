@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:thispls/models/login_page.dart';
 
 class car_list extends StatefulWidget {
   car_list({Key? key}) : super(key: key);
@@ -22,13 +23,26 @@ class _CarListState extends State<car_list> {
 
   Future<List<dynamic>> getCars() async {
 
-    var response = await http.get(Uri.parse("http://192.168.1.164/dashboard/test/carlist.php"));
+    var response = await http.get(Uri.parse("http://192.168.0.106/dashboard/test/carlist.php"));
 
     setState(() {
       carlist=json.decode(response.body);
     });
 
     return carlist;
+  }
+
+  sendreq(String car_no) async
+  {
+    var res = await http.post(
+      Uri.parse("http://192.168.0.106/dashboard/test/requestrent.php"),
+      body: {
+        "car_no": car_no,
+        "logged_name": logged_name,
+      },
+    );
+
+
   }
 
   @override
@@ -47,8 +61,10 @@ class _CarListState extends State<car_list> {
                   leading: Text(car_list[index]['model_name']),
                   title: Text(car_list[index]['car_no']),
                   subtitle: Text(car_list[index]['car_age']),
-                  trailing: ElevatedButton(onPressed: (){},child: Text('Submit Request')),
+
+                  trailing: ElevatedButton(onPressed: (){sendreq(car_list[index]['car_no'].toString());},child: Text('Submit Request')),
                 );
+
               },
             );
           } else if (snapshot.connectionState == ConnectionState.waiting) {
