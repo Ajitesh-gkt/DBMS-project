@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:thispls/models/login_page.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
@@ -10,12 +11,12 @@ class AppDrawer extends StatelessWidget {
         color: Colors.grey[900],
         child: ListView(
           children: [
-            const DrawerHeader(
+             DrawerHeader(
               padding: EdgeInsets.zero,
               //  margin: EdgeInsets.zero,
               child: UserAccountsDrawerHeader(
                 decoration: BoxDecoration(color: Colors.black),
-                accountName: Text('name'),
+                accountName: Text(logged_name),
                 accountEmail: Text('email'),
                 currentAccountPicture: CircleAvatar(
                   backgroundImage: NetworkImage(

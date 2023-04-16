@@ -6,6 +6,8 @@ import 'package:http/http.dart'as http;
 import 'dart:convert';
 import 'dart:async';
 
+import 'package:thispls/models/login_page.dart';
+
 class add_car extends StatelessWidget {
    add_car({super.key});
 
@@ -21,7 +23,7 @@ class add_car extends StatelessWidget {
 
   Future <List> senddata() async {
     print('Entered senddata');
-    final response = await http.post(Uri.parse("http://192.168.0.132/dashboard/test/rentcar.php"), body: {
+    final response = await http.post(Uri.parse("http://192.168.1.164/dashboard/test/rentcar.php"), body: {
       "model_name": model_name.text,
       "car_age": car_age.text,
       "car_no": car_no.text,
@@ -29,6 +31,7 @@ class add_car extends StatelessWidget {
       "state": state.text,
       "district": district.text,
       "rent_per_day": rent_per_day.text,
+      "dealer": logged_name,
 
     });
     var datauser = json.decode(response.body);

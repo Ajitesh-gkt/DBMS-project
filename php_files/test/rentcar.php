@@ -9,8 +9,9 @@ include "connect.php";
     $state=$_POST['state'];
     $district=$_POST['district'];
     $rent_per_day=$_POST['rent_per_day'];
+    $dealer = $_POST['dealer'];
 
-	$sqlQuery="INSERT INTO cars (model_name,car_age,car_no,car_cond,state,district,rent_per_day) VALUES ('$model_name','$car_age','$car_no','$car_cond','$state','$district','$rent_per_day')";
+	$sqlQuery="INSERT INTO cars (model_name,car_age,car_no,car_cond,state,district,rent_per_day,dealer) VALUES ('$model_name','$car_age','$car_no','$car_cond','$state','$district','$rent_per_day','$dealer')";
 	$results= $conn ->query($sqlQuery);
  
   

@@ -9,7 +9,7 @@ import 'dart:convert';
 
 import 'package:thispls/home.dart';
 import 'package:thispls/models/add_car.dart';
-String logged_name="";
+String logged_name="default";
 List ll = <dynamic>[];
 
 void main() {
@@ -33,18 +33,25 @@ class LoginDemo extends StatefulWidget {
 
 class _LoginDemoState extends State<LoginDemo> {
 
+  bool error=true;
   TextEditingController email=new TextEditingController();
   TextEditingController password=new TextEditingController();
+
+  var h = new Map<String,dynamic>();
 
   login() async
   {
     var res = await http.post(
-      Uri.parse("http://192.168.0.132/dashboard/test/login.php"),
+      Uri.parse("http://192.168.1.164/dashboard/test/login.php"),
       body: {
         "email": email.text.trim(),
         "password": password.text.trim(),
       },
     );
+
+    var info = json.decode(res.body);
+   logged_name=info[0]["name"];
+    print(logged_name);
 
     // var response = await http.get(Uri.parse("http://192.168.0.132/dashboard/test/login.php"));
     // ll=json.decode(response.body);
@@ -52,8 +59,17 @@ class _LoginDemoState extends State<LoginDemo> {
     // print(logged_name);
 
 
+
     if (res.statusCode == 200) {
+      // var info = json.decode(res.body);
+      // if(info["success"])
+      //   {
+      //     String name = info["name"];
+      //     print(name);
+      //
+      //   }
       Navigator.push(context, MaterialPageRoute(builder: (context) => home()));
+
     }
     else {
       // Handle failed login
@@ -61,6 +77,11 @@ class _LoginDemoState extends State<LoginDemo> {
         SnackBar(content: Text('Login failed')),
       );
     }
+  }
+  @override
+  void initState()
+  {
+    error = false;
   }
 
   bool check = true;
