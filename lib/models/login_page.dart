@@ -5,8 +5,12 @@ import 'package:http/http.dart'as http;
 import 'dart:async';
 import 'dart:convert';
 
+
+
 import 'package:thispls/home.dart';
 import 'package:thispls/models/add_car.dart';
+String logged_name="";
+List ll = <dynamic>[];
 
 void main() {
   runApp(MyApp());
@@ -41,6 +45,13 @@ class _LoginDemoState extends State<LoginDemo> {
         "password": password.text.trim(),
       },
     );
+
+    // var response = await http.get(Uri.parse("http://192.168.0.132/dashboard/test/login.php"));
+    // ll=json.decode(response.body);
+    // logged_name=ll[0]['name'];
+    // print(logged_name);
+
+
     if (res.statusCode == 200) {
       Navigator.push(context, MaterialPageRoute(builder: (context) => home()));
     }
