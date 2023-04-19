@@ -35,7 +35,7 @@ class _CarListState extends State<car_list> {
   sendreq(String car_no) async
   {
     var res = await http.post(
-      Uri.parse("http://192.168.0.106/dashboard/test/requestrent.php"),
+      Uri.parse("http://$localhost/dashboard/test/requestrent.php"),
       body: {
         "car_no": car_no,
         "logged_name": logged_name,
@@ -48,23 +48,35 @@ class _CarListState extends State<car_list> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[400],
-      body: FutureBuilder<List<dynamic>>(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text("Cars' List"),
+    ),
+      backgroundColor: Colors.grey[200],
+      body: 
+      FutureBuilder<List<dynamic>>(
         future: _futureCars,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
             List<dynamic> car_list = snapshot.data!;
-            return ListView.builder(
+            return
+              ListView.builder(
               itemCount: car_list.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  leading: Icon(Icons.car_rental),//Text(car_list[index]['model_name']),
-                  title: Text(car_list[index]['model_name']),
-                  subtitle: Text(car_list[index]['car_no']+car_list[index]['car_age']),
+                  shape:BeveledRectangleBorder(side: BorderSide(width: 2,color: Colors.black),borderRadius: BorderRadius.circular(8)),
+                  leading: Icon(Icons.car_rental,size: 42,),//Text(car_list[index]['model_name']),
+                  title: Text(car_list[index]['model_name'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                  subtitle: Text(car_list[index]['car_no']+'    AGE: '+car_list[index]['car_age'],style: TextStyle(fontSize: 15),),
 
-                  trailing: ElevatedButton(onPressed: (){sendreq(car_list[index]['car_no'].toString());ScaffoldMessenger.of(context).showSnackBar(
+                  trailing: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.grey[400],
+                      foregroundColor: Colors.white
+                    ),
+                      onPressed: (){sendreq(car_list[index]['car_no'].toString());ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('Request submitted')),);},
-                      child: Text('Submit Request')),
+                      child: Text('Submit Request',style: TextStyle(color: Colors.black),)),
                 );
 
               },
