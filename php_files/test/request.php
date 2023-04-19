@@ -1,8 +1,9 @@
 <?php 
 include "connect.php";
-$bool=true;
+$logged_name=$_POST['logged_name'];
 
-$sqlQuery="SELECT * FROM cars where availbility='1'";
+
+$sqlQuery="SELECT * FROM booking_reqeuest where dealer_name='$logged_name'";
 $results= $conn ->query($sqlQuery);
 $list=array();
     if($results)
