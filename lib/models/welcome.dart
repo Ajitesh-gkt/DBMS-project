@@ -26,6 +26,7 @@ class _welcomePageState extends State<welcomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       // appBar: AppBar(title: const Text("Welcome!",
       // textAlign: TextAlign.center,
       // style: TextStyle(fontSize: 8),

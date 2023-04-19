@@ -25,7 +25,7 @@ class myApp extends StatelessWidget {
           "/": (context) => welcomePage(),
           "/login": (context) => LoginDemo(),
           "/signup/dealer": (context) => Register_as_dealer(),
-          "/signup/Renter": (context) => Register_as_Renter(),
+          // "/signup/Renter": (context) => Register_as_Renter(),
           "/addCar": (context) => add_car(),
           "/home": (context) => home(),
           "/renters": (context) => rentersList(),
