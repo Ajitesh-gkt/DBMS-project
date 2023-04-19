@@ -6,6 +6,7 @@ import 'package:http/http.dart'as http;
 import 'dart:convert';
 import 'dart:async';
 
+String localhost="192.168.24.222";
 class Register_as_dealer extends StatefulWidget {
   const Register_as_dealer({super.key});
 
@@ -25,7 +26,7 @@ class _Register_as_dealerState extends State<Register_as_dealer> {
 
   Future <List> senddata() async {
     print('Entered senddata');
-    final response = await http.post(Uri.parse("http://192.168.1.164/dashboard/test/register.php"), body: {
+    final response = await http.post(Uri.parse("http://$localhost/dashboard/test/register.php"), body: {
       "name": name.text,
       "email": email.text,
       "mobile": mobile.text,

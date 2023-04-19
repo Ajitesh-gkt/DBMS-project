@@ -23,7 +23,7 @@ class add_car extends StatelessWidget {
 
   Future <List> senddata() async {
     print('Entered senddata');
-    final response = await http.post(Uri.parse("http://192.168.0.106/dashboard/test/rentcar.php"), body: {
+    final response = await http.post(Uri.parse("http://$localhost/dashboard/test/rentcar.php"), body: {
       "model_name": model_name.text,
       "car_age": car_age.text,
       "car_no": car_no.text,
@@ -45,6 +45,7 @@ class add_car extends StatelessWidget {
       //   title: const Text('Login Page'),
 
       //   ),
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.grey[400],
       body: SafeArea(
         child: Center(

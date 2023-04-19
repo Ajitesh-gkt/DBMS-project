@@ -23,7 +23,7 @@ class _CarListState extends State<car_list> {
 
   Future<List<dynamic>> getCars() async {
 
-    var response = await http.get(Uri.parse("http://192.168.0.106/dashboard/test/carlist.php"));
+    var response = await http.get(Uri.parse("http://$localhost/dashboard/test/carlist.php"));
 
     setState(() {
       carlist=json.decode(response.body);
@@ -58,11 +58,13 @@ class _CarListState extends State<car_list> {
               itemCount: car_list.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  leading: Text(car_list[index]['model_name']),
-                  title: Text(car_list[index]['car_no']),
-                  subtitle: Text(car_list[index]['car_age']),
+                  leading: Icon(Icons.car_rental),//Text(car_list[index]['model_name']),
+                  title: Text(car_list[index]['model_name']),
+                  subtitle: Text(car_list[index]['car_no']+car_list[index]['car_age']),
 
-                  trailing: ElevatedButton(onPressed: (){sendreq(car_list[index]['car_no'].toString());},child: Text('Submit Request')),
+                  trailing: ElevatedButton(onPressed: (){sendreq(car_list[index]['car_no'].toString());ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Request submitted')),);},
+                      child: Text('Submit Request')),
                 );
 
               },
