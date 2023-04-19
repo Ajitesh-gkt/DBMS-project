@@ -4,41 +4,44 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:thispls/models/login_page.dart';
 
-class car_list extends StatefulWidget {
-  car_list({Key? key}) : super(key: key);
+class request extends StatefulWidget {
+  request({Key? key}) : super(key: key);
 
   @override
-  _CarListState createState() => _CarListState();
+  _requeststate createState() => _requeststate();
 }
 
-class _CarListState extends State<car_list> {
-  late Future<List<dynamic>> _futureCars;
+class _requeststate extends State<request> {
+  late Future<List<dynamic>> _futureeq;
 
   @override
   void initState() {
     super.initState();
-    _futureCars = getCars();
+    _futureeq = getCars();
   }
-  List carlist = <dynamic>[];
+  List reqlist = <dynamic>[];
 
   Future<List<dynamic>> getCars() async {
 
-    var response = await http.get(Uri.parse("http://$localhost/dashboard/test/carlist.php"));
-
-    setState(() {
-      carlist=json.decode(response.body);
+    var response = await http.post(Uri.parse("http://$localhost/dashboard/test/request.php"),
+    body:{
+      "logged_name":logged_name,
     });
 
-    return carlist;
+    setState(() {
+      reqlist=json.decode(response.body);
+    });
+
+    return reqlist;
   }
 
   sendreq(String car_no) async
   {
     var res = await http.post(
-      Uri.parse("http://$localhost/dashboard/test/requestrent.php"),
+      Uri.parse("http://$localhost/dashboard/test/confbooking.php"),
       body: {
         "car_no": car_no,
-        "logged_name": logged_name,
+
       },
     );
 
@@ -50,7 +53,7 @@ class _CarListState extends State<car_list> {
     return Scaffold(
       backgroundColor: Colors.grey[400],
       body: FutureBuilder<List<dynamic>>(
-        future: _futureCars,
+        future: _futureeq,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
             List<dynamic> car_list = snapshot.data!;
@@ -58,9 +61,8 @@ class _CarListState extends State<car_list> {
               itemCount: car_list.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  leading: Text(car_list[index]['model_name']),
-                  title: Text(car_list[index]['car_no']),
-                  subtitle: Text(car_list[index]['car_age']),
+                  title: Text("You have a request from "+car_list[index]['renter_name']),
+                  subtitle: Text("For: "+car_list[index]['model_name']+"for "+car_list[index]['rent']),
 
                   trailing: ElevatedButton(onPressed: (){sendreq(car_list[index]['car_no'].toString());},child: Text('Submit Request')),
                 );

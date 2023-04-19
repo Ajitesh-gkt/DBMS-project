@@ -12,6 +12,7 @@ import 'package:thispls/models/add_car.dart';
 String logged_name="default";
 String logged_email="default";
 List ll = <dynamic>[];
+String localhost="192.168.6.41";
 
 void main() {
   runApp(MyApp());
@@ -43,7 +44,7 @@ class _LoginDemoState extends State<LoginDemo> {
   login() async
   {
     var res = await http.post(
-      Uri.parse("http://192.168.0.106/dashboard/test/login.php"),
+      Uri.parse("http://$localhost/dashboard/test/login.php"),
       body: {
         "email": email.text.trim(),
         "password": password.text.trim(),
@@ -53,7 +54,8 @@ class _LoginDemoState extends State<LoginDemo> {
     var info = json.decode(res.body);
    logged_name=info[0]["name"];
    logged_email=info[0]["email"];
-    print(logged_name);
+
+
 
     // var response = await http.get(Uri.parse("http://192.168.0.132/dashboard/test/login.php"));
     // ll=json.decode(response.body);
