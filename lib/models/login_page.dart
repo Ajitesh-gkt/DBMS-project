@@ -12,11 +12,10 @@ import 'package:thispls/models/add_car.dart';
 String logged_name="default";
 String logged_email="default";
 List ll = <dynamic>[];
-<<<<<<< HEAD
-String localhost="192.168.1.68";
-=======
+
+
 String localhost="192.168.1.166";
->>>>>>> 7b1300e50a0fcade0893b14dcb08028908520eb8
+
 
 void main() {
   runApp(MyApp());
@@ -56,8 +55,8 @@ class _LoginDemoState extends State<LoginDemo> {
     );
 
     var info = json.decode(res.body);
-   logged_name=info[0]["Name"];
-   logged_email=info[0]["Email"];
+   logged_name=info[0]["name"];
+   logged_email=info[0]["email"];
 
 
 

@@ -5,11 +5,9 @@ import 'package:http/http.dart'as http;
 
 import 'dart:convert';
 import 'dart:async';
-<<<<<<< HEAD
-String localhost="192.168.1.68";
-=======
+
 String localhost="192.168.1.166";
->>>>>>> 7b1300e50a0fcade0893b14dcb08028908520eb8
+
 
 
 class Register_as_dealer extends StatefulWidget {

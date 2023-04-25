@@ -43,7 +43,7 @@ class _homeState extends State<home> {
   //                     title: Row(
   //                       children: [
   //                         Container(
-  //                           height: 140,
+  //                           height: 150,
   //                           width: 200,
   //                           child: Image(
   //                             image: AssetImage(car[index].image.toString()),
@@ -92,40 +92,40 @@ class _homeState extends State<home> {
   //   );
   // }
 // }
-  SingleChildScrollView makeDashboardItem(String title, IconData icon) {
-    return SingleChildScrollView(
-      child: Card(
-        // elevation: 1.0,
-        margin: EdgeInsets.all(8.0),
-        child: Container(
-          decoration: BoxDecoration(color: Color.fromRGBO(220, 220, 220, 1.0)),
-          child: new InkWell(
-            onTap: () {},
-            // child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisSize: MainAxisSize.min,
-              verticalDirection: VerticalDirection.down,
-              children: <Widget>[
-                SizedBox(height: 50.0),
-                Center(
-                    child: Icon(
-                      icon,
-                      size: 40.0,
-                      color: Colors.black,
-                    )),
-                SizedBox(height: 10.0),
-                new Center(
-                  child: new Text(title,
-                      style:
-                      new TextStyle(fontSize: 18.0, color: Colors.black)),
-                ),
-              ],
-            ),
-          // ),
-          ),
-        )),);
-  }
+//   SingleChildScrollView makeDashboardItem(String title, IconData icon) {
+//     return SingleChildScrollView(
+//       child: Card(
+//         // elevation: 1.0,
+//         margin: EdgeInsets.all(8.0),
+//         child: Container(
+//           decoration: BoxDecoration(color: Color.fromRGBO(220, 220, 220, 1.0)),
+//           child: new InkWell(
+//             onTap: () {},
+//             // child: SingleChildScrollView(
+//             child: Column(
+//               crossAxisAlignment: CrossAxisAlignment.stretch,
+//               mainAxisSize: MainAxisSize.min,
+//               verticalDirection: VerticalDirection.down,
+//               children: <Widget>[
+//                 SizedBox(height: 50.0),
+//                 Center(
+//                     child: Icon(
+//                       icon,
+//                       size: 40.0,
+//                       color: Colors.black,
+//                     )),
+//                 SizedBox(height: 10.0),
+//                 new Center(
+//                   child: new Text(title,
+//                       style:
+//                       new TextStyle(fontSize: 18.0, color: Colors.black)),
+//                 ),
+//               ],
+//             ),
+//           // ),
+//           ),
+//         )),);
+//   }
 
   @override
   Widget build(BuildContext context) {
@@ -133,33 +133,250 @@ class _homeState extends State<home> {
       resizeToAvoidBottomInset: false,
       body: Column(
         children: [
-          Text("Hello User!",style: TextStyle(fontSize:30 ,decoration: TextDecoration.overline),),
-          SizedBox(height: 20,),
-          Container(
-            // decoration: BoxDecoration(
-            //   border: Border.all(color: Colors.black)
-            // ),
-            color: Colors.black,
-            padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
-            child: Column(
-              // crossAxisCount: 2,
-              // padding: EdgeInsets.all(3.0),
-              children: <Widget>[
-                makeDashboardItem("Rent", Icons.car_rental),
-                makeDashboardItem("Car List", Icons.car_crash_outlined),
-                makeDashboardItem("Request", Icons.car_crash_rounded),
-                makeDashboardItem("Updates", Icons.alarm),
-                // makeDashboardItem("Renter List", Icons.alarm),
+          Text("Hello User!",style: TextStyle(fontSize:30 ,decoration: TextDecoration.overline,
+          ), ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                SizedBox(height: 20,),
+                Padding(padding: EdgeInsets.all(12),
+                  child: Center(
+                    child:Wrap(
+                      spacing: 20,
+                      runSpacing: 20,
+                      children: [
+                        SizedBox(
+                          width: 150,
+                          height: 140,
+                          child: Card(
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular((8)),
+                            ),
+                            child: Center(
+                              child: Padding(
+                                  padding: EdgeInsets.all(10),
+                                  child:Column(
+                                    children: [
+                                      Icon(
+                                        Icons.car_rental,size: 50,
+                                      ),
+                                      SizedBox(height: 10,),
+                                      Text('Account'),
+                                    ],
+                                  )
+                              ),
+                            ),
+
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () => Navigator.pushNamed(context, "/addCar"),
+                          child: SizedBox(
+                            width: 150,
+                            height: 140,
+                            child: Card(
+                              elevation: 2,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular((8)),
+                              ),
+                              child: Center(
+                                child: Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child:Column(
+                                      children: [
+                                        Icon(
+                                          Icons.car_rental,
+                                        ),
+                                        SizedBox(height: 10,),
+                                        Text('Car Rent'),
+                                      ],
+                                    )
+                                ),
+                              ),
+
+                            ),
+                          ),
+                        ),
+
+                      ],
+                    ),
+                  ),
+
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+
+                SizedBox(height: 20,),
+                Padding(padding: EdgeInsets.all(12),
+                  child: Center(
+                    child:Wrap(
+                      spacing: 20,
+                      runSpacing: 20,
+                      children: [
+                        InkWell(
+                          onTap: () => Navigator.pushNamed(context, "/carlist"),
+                          child: SizedBox(
+                            width: 150,
+                            height: 140,
+                            child: Card(
+                              elevation: 2,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular((8)),
+                              ),
+                              child: Center(
+                                child: Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child:Column(
+                                      children: [
+                                        Icon(
+                                          Icons.car_rental,
+                                        ),
+                                        SizedBox(height: 10,),
+                                        Text('Car Lists'),
+                                      ],
+                                    )
+                                ),
+                              ),
+
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () => Navigator.pushNamed(context, "/request"),
+                          child: SizedBox(
+                            width: 150,
+                            height: 140,
+                            child: Card(
+                              elevation: 2,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular((8)),
+                              ),
+                              child: Center(
+                                child: Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child:Column(
+                                      children: [
+                                        Icon(
+                                          Icons.car_rental,
+                                        ),
+                                        SizedBox(height: 10,),
+                                        Text('Requests'),
+                                      ],
+                                    )
+                                ),
+                              ),
+
+                            ),
+                          ),
+                        ),
+
+                      ],
+                    ),
+                  ),
+
+                )
 
               ],
             ),
           ),
+
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+
+            SizedBox(height: 20,),
+            Padding(padding: EdgeInsets.all(12),
+              child: Center(
+                child:Wrap(
+                  spacing: 20,
+                  runSpacing: 20,
+                  children: [
+                    InkWell(
+                      onTap: () => Navigator.pushNamed(context, "/updates"),
+                      child: SizedBox(
+                        width: 150,
+                        height: 140,
+                        child: Card(
+                          elevation: 2,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular((8)),
+                          ),
+                          child: Center(
+                            child: Padding(
+                                padding: EdgeInsets.all(10),
+                                child:Column(
+                                  children: [
+                                    Icon(
+                                      Icons.car_rental,
+                                    ),
+                                    SizedBox(height: 10,),
+                                    Text('Updates'),
+                                  ],
+                                )
+                            ),
+                          ),
+
+                        ),
+                      ),
+                    ),
+
+
+                  ],
+                ),
+              ),
+
+            )
+
+          ],
+        ),
+      ),
+          // Container(
+          //   // decoration: BoxDecoration(
+          //   //   border: Border.all(color: Colors.black)
+          //   // ),
+          //   color: Colors.black,
+          //   padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+          //   child: Column(
+          //     // crossAxisCount: 2,
+          //     // padding: EdgeInsets.all(3.0),
+          //     children: <Widget>[
+          //       Row(
+          //         children: <Widget>[
+          //           Container(
+          //            
+          //           ),
+          //           // makeDashboardItem("Rent", Icons.car_rental),
+          //           // makeDashboardItem("Car List", Icons.car_crash_outlined),
+          //         ],
+          //       ),
+          //       Row(
+          //         children: <Widget>[
+          //           // makeDashboardItem("Request", Icons.car_crash_rounded),
+          //           // makeDashboardItem("Updates", Icons.alarm),
+          //         ],
+          //       ),
+          //
+          //
+          //       // makeDashboardItem("Renter List", Icons.alarm),
+          //
+          //     ],
+          //   ),
+          // ),
         ],
       ),
       appBar: AppBar(
         title: Text("DASHBOARD"),
         backgroundColor: Colors.black,
       ),
+      backgroundColor: Colors.grey,
       drawer: AppDrawer(),
     );
   }
