@@ -42,25 +42,25 @@ class AppDrawer extends StatelessWidget {
               ),
               onTap: () => Navigator.pushNamed(context, "/addCar"),
             ),
-            const ListTile(
-              leading: Icon(CupertinoIcons.mail, color: Colors.white),
-              title: Text(
-                'Email',
-                style: TextStyle(color: Colors.white),
-                selectionColor: Colors.white,
-                textScaleFactor: 1.3,
-              ),
-            ),
-            ListTile(
-              leading:
-                  const Icon(CupertinoIcons.person_3_fill, color: Colors.white),
-              title: const Text(
-                "Renters' list",
-                style: TextStyle(color: Colors.white),
-                textScaleFactor: 1.3,
-              ),
-              onTap: () => Navigator.pushNamed(context, "/renters"),
-            ),
+            // const ListTile(
+            //   leading: Icon(CupertinoIcons.mail, color: Colors.white),
+            //   title: Text(
+            //     'Email',
+            //     style: TextStyle(color: Colors.white),
+            //     selectionColor: Colors.white,
+            //     textScaleFactor: 1.3,
+            //   ),
+            // ),
+            // ListTile(
+            //   leading:
+            //       const Icon(CupertinoIcons.person_3_fill, color: Colors.white),
+            //   title: const Text(
+            //     "Renters' list",
+            //     style: TextStyle(color: Colors.white),
+            //     textScaleFactor: 1.3,
+            //   ),
+            //   onTap: () => Navigator.pushNamed(context, "/renters"),
+            // ),
             ListTile(
               leading:
               const Icon(CupertinoIcons.person_3_fill, color: Colors.white),
