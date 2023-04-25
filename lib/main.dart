@@ -1,4 +1,5 @@
 import 'package:thispls/home.dart';
+import 'package:thispls/models/account.dart';
 import 'package:thispls/models/add_car.dart';
 import 'package:thispls/models/carlist.dart';
 import 'package:thispls/models/login_page.dart';
@@ -33,6 +34,8 @@ class myApp extends StatelessWidget {
           "/carlist": (context) => car_list(),
           "/request": (context) => request(),
           "/updates": (context) => updates(),
+          "/account": (context) => account(),
+
         });
   }
 }

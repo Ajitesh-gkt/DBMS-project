@@ -147,29 +147,33 @@ class _homeState extends State<home> {
                       spacing: 20,
                       runSpacing: 20,
                       children: [
-                        SizedBox(
-                          width: 150,
-                          height: 140,
-                          child: Card(
-                            elevation: 2,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular((8)),
-                            ),
-                            child: Center(
-                              child: Padding(
-                                  padding: EdgeInsets.all(10),
-                                  child:Column(
-                                    children: [
-                                      Icon(
-                                        Icons.car_rental,size: 50,
-                                      ),
-                                      SizedBox(height: 10,),
-                                      Text('Account'),
-                                    ],
-                                  )
-                              ),
-                            ),
+                        InkWell(
+                          onTap: () => Navigator.pushNamed(context, "/account"),
 
+                          child: SizedBox(
+                            width: 150,
+                            height: 140,
+                            child: Card(
+                              elevation: 2,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular((8)),
+                              ),
+                              child: Center(
+                                child: Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child:Column(
+                                      children: [
+                                        Icon(
+                                          Icons.car_rental,size: 50,
+                                        ),
+                                        SizedBox(height: 10,),
+                                        Text('Account'),
+                                      ],
+                                    )
+                                ),
+                              ),
+
+                            ),
                           ),
                         ),
                         InkWell(

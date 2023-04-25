@@ -24,13 +24,14 @@ class AppDrawer extends StatelessWidget {
                 ),
               ),
             ),
-            const ListTile(
+             ListTile(
               leading: Icon(CupertinoIcons.person_alt, color: Colors.white),
               title: Text(
                 'Account',
                 style: TextStyle(color: Colors.white),
                 textScaleFactor: 1.3,
               ),
+              onTap: () => Navigator.pushNamed(context, "/account"),
             ),
             ListTile(
               leading:
@@ -91,6 +92,7 @@ class AppDrawer extends StatelessWidget {
               ),
               onTap: () => Navigator.pushNamed(context, "/updates"),
             ),
+
           ],
         ),
       ),

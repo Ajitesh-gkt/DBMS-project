@@ -54,47 +54,50 @@ class _CarListState extends State<car_list> {
     ),
       backgroundColor: Colors.grey[200],
       body: 
-      FutureBuilder<List<dynamic>>(
-        future: _futureCars,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
-            List<dynamic> car_list = snapshot.data!;
-            return
-              ListView.builder(
-              itemCount: car_list.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  shape:BeveledRectangleBorder(side: BorderSide(width: 2,color: Colors.black),borderRadius: BorderRadius.circular(8)),
-                  leading: Icon(Icons.car_rental,size: 42,),//Text(car_list[index]['model_name']),
-                  title: Text(car_list[index]['model_name'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                  subtitle: Text(car_list[index]['car_no']+'    AGE: '+car_list[index]['car_age'],style: TextStyle(fontSize: 15),),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: FutureBuilder<List<dynamic>>(
+          future: _futureCars,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
+              List<dynamic> car_list = snapshot.data!;
+              return
+                ListView.builder(
+                itemCount: car_list.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    shape:BeveledRectangleBorder(side: BorderSide(width: 2,color: Colors.black),borderRadius: BorderRadius.circular(8)),
+                    leading: Icon(Icons.car_rental,size: 42,),//Text(car_list[index]['model_name']),
+                    title: Text(car_list[index]['model_name'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                    subtitle: Text(car_list[index]['car_no']+'    AGE: '+car_list[index]['car_age'],style: TextStyle(fontSize: 15),),
 
-                  trailing: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey[400],
-                      foregroundColor: Colors.white
-                    ),
-                      onPressed: (){sendreq(car_list[index]['car_no'].toString());ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Request submitted')),);},
-                      child: Text('Submit Request',style: TextStyle(color: Colors.black),)),
-                );
+                    trailing: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.grey[400],
+                        foregroundColor: Colors.white
+                      ),
+                        onPressed: (){sendreq(car_list[index]['car_no'].toString());ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Request submitted')),);},
+                        child: Text('Submit Request',style: TextStyle(color: Colors.black),)),
+                  );
 
-              },
-            );
-          } else if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (snapshot.hasError) {
-            return Center(
-              child: Text('Error fetching car list'),
-            );
-          } else {
-            return Center(
-              child: Text('No data'),
-            );
-          }
-        },
+                },
+              );
+            } else if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (snapshot.hasError) {
+              return Center(
+                child: Text('Error fetching car list'),
+              );
+            } else {
+              return Center(
+                child: Text('No data'),
+              );
+            }
+          },
+        ),
       ),
     );
   }

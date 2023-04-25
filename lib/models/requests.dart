@@ -64,10 +64,15 @@ class _requeststate extends State<request> {
               itemCount: car_list.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text("You have a request from "+car_list[index]['renter_name']),
-                  subtitle: Text("For: "+car_list[index]['model_name']+"for "+car_list[index]['rent']),
+                  title: Text("Request from "+car_list[index]['renter_name']),
+                  subtitle: Text("For: "+car_list[index]['model_name']+" Cost:"+car_list[index]['rent']),
 
-                  trailing: ElevatedButton(onPressed: (){sendreq(car_list[index]['car_no'].toString());},child: Text('Accept Request')),
+                  trailing: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.grey[700],
+                          foregroundColor: Colors.white
+                      ),
+                      onPressed: (){sendreq(car_list[index]['car_no'].toString());},child: Text('Accept Request')),
                 );
 
               },
