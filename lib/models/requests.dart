@@ -51,6 +51,9 @@ class _requeststate extends State<request> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text("Requests"),),
       backgroundColor: Colors.grey[400],
       body: FutureBuilder<List<dynamic>>(
         future: _futureeq,
@@ -64,7 +67,7 @@ class _requeststate extends State<request> {
                   title: Text("You have a request from "+car_list[index]['renter_name']),
                   subtitle: Text("For: "+car_list[index]['model_name']+"for "+car_list[index]['rent']),
 
-                  trailing: ElevatedButton(onPressed: (){sendreq(car_list[index]['car_no'].toString());},child: Text('Submit Request')),
+                  trailing: ElevatedButton(onPressed: (){sendreq(car_list[index]['car_no'].toString());},child: Text('Accept Request')),
                 );
 
               },

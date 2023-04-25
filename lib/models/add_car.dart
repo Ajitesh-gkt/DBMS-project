@@ -235,22 +235,33 @@ class add_car extends StatelessWidget {
 
               // sign in button
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal:150.0),
-                child: Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(color: Colors.black,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child:  ElevatedButton(
-                    onPressed: (){senddata();},
-                    child: Text(
-                      'Add Car',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
-
+                padding: const EdgeInsets.symmetric(horizontal:10.0,vertical: 18),
+                child: InkWell(
+                  onTap: (){
+                    senddata();
+                  },
+                  child: Container(
+                    height: 45,
+                    width: 100,
+                    // padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(color: Colors.black.withOpacity(0.7),
+                      borderRadius: BorderRadius.circular(12),
                     ),
+                    child:Center(child: Text('Add Car',style: TextStyle(color: Colors.white,fontSize: 15,fontWeight: FontWeight.bold),)),
+
+
+
+                    // ElevatedButton(
+                    //   onPressed: (){senddata();},
+                    //   child: Text(
+                    //     'Add Car',
+                    //     style: TextStyle(
+                    //         color: Colors.white,
+                    //         fontWeight: FontWeight.bold,
+                    //         fontSize: 18),
+                    //
+                    //   ),
+                    // ),
                   ),
                 ),
               ),

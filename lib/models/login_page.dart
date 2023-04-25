@@ -12,7 +12,7 @@ import 'package:thispls/models/add_car.dart';
 String logged_name="default";
 String logged_email="default";
 List ll = <dynamic>[];
-String localhost="192.168.0.123";
+String localhost="192.168.1.166";
 
 void main() {
   runApp(MyApp());

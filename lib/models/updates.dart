@@ -52,6 +52,9 @@ class _updatesstate extends State<updates> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text("Updates"),),
       backgroundColor: Colors.grey[400],
       body: FutureBuilder<List<dynamic>>(
         future: _futureeq,
@@ -59,23 +62,43 @@ class _updatesstate extends State<updates> {
           if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
             List<dynamic> car_list = snapshot.data!;
 
-            return Card(
-              elevation: 6,
-              child: ListView.builder(
-                itemCount: car_list.length,
-                itemBuilder: (context, index) {
+            return ListView.builder(
+              itemCount: car_list.length,
+              itemBuilder: (context, index) {
 
-                  String dealer = car_list[index]["dealer_name"];
-                  String carname = car_list[index]['model_name'];
-                  String renter = car_list[index]['renter_name'];
-                  return ListTile(
+                String dealer = car_list[index]["dealer_name"];
+                String carname = car_list[index]['model_name'];
+                String renter = car_list[index]['renter_name'];
+                return ListTile(
 
-                    title: car_list[index]['renter_name'] == logged_name ? Text('Your Request from $dealer for the car $carname is confirmed')
-                        :(car_list[index]['dealer_name'] == logged_name) ? Text('Your car $carname has been booked by $renter')
-                        : Text('You have not done anything yet'),
-                  );
-                },
-              ),
+                  title: Card(
+                    child: car_list[index]['renter_name'] == logged_name ? Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text('Your Request from $dealer for the car $carname is confirmed',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 15),),
+                    )
+                        :(car_list[index]['dealer_name'] == logged_name) ? Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Text('Your car $carname has been booked by $renter',
+                      style: TextStyle(
+                            color: Colors.grey[800],
+                            fontWeight: FontWeight.w400,
+                            fontSize: 15),),
+                        )
+                        : Text('You have not done anything yet',
+                      style: TextStyle(
+                          color: Colors.grey[800],
+                          fontWeight: FontWeight.w700,
+                          fontFamily: 'Garamond',
+                          fontSize: 20),),
+                    elevation: 6,
+                    // margin: EdgeInsets.all(10),
+                  ),
+                );
+              },
             );
           } else if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
