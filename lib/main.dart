@@ -4,6 +4,7 @@ import 'package:thispls/models/carlist.dart';
 import 'package:thispls/models/login_page.dart';
 import 'package:thispls/models/carlist.dart';
 import 'package:thispls/models/requests.dart';
+import 'package:thispls/models/updates.dart';
 import 'models/Register.dart';
 import 'models/rentersList.dart';
 import 'models/welcome.dart';
@@ -31,6 +32,7 @@ class myApp extends StatelessWidget {
           "/renters": (context) => rentersList(),
           "/carlist": (context) => car_list(),
           "/request": (context) => request(),
+          "/updates": (context) => updates(),
         });
   }
 }
