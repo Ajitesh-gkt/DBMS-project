@@ -3,6 +3,7 @@ import 'package:thispls/models/carModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:thispls/models/login_page.dart';
 
 import 'AppDrawer.dart';
 
@@ -133,7 +134,7 @@ class _homeState extends State<home> {
       resizeToAvoidBottomInset: false,
       body: Column(
         children: [
-          Text("Hello User!",style: TextStyle(fontSize:30 ,decoration: TextDecoration.overline,
+          Text("Hello $logged_name!",style: TextStyle(fontSize:30 ,decoration: TextDecoration.overline,
           ), ),
           Padding(
             padding: const EdgeInsets.all(8.0),
